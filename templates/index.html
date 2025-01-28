@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class=" bg-gray-100 text-3xl font-bold mx-auto flex justify-center items-center p-4">The ultimate set of tools for image editing</h1>
+
+    <div class="bg-gray-100 min-h-screen p-6">
+        <div class="container mx-auto">
+            <h1 class="text-3xl font-bold text-center mb-8">Image Editing Tools</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Image Cropper -->
+                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
+                    <div class="text-blue-500 mb-4">
+                        <img width="100" height="100" src=
+                                "https://img.icons8.com/external-mixed-line-solid-yogi-aprelliyanto/100/
+                                external-crop-image-creative-thinking-mixed-line-solid-yogi-aprelliyanto.png" 
+                             alt="external-crop-image-creative-thinking-mixed-line-solid-yogi-aprelliyanto"/>
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">Image Cropper</h2>
+                    <p class="text-gray-600">Crop your images to perfection with ease.</p>
+                </div>
+
+                <!-- Image Resizer -->
+                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
+                    <div class="text-green-500 mb-4">
+                        <img src="{% static 'image resize.png' %}" alt="image-resize" width="100" height="100">
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">Image Resizer</h2>
+                    <p class="text-gray-600">Set your dimensions in pixels or percentages and effortlessly resize your JPG, PNG, SVG, and GIF images.</p>
+                </div>
+
+                <!-- Image Compressor -->
+                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
+                    <div class="text-yellow-500 mb-4">
+                        <img src="{% static 'image compressor.png' %}" alt="image-compress" width="100" height="100">
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">Image Compressor</h2>
+                    <p class="text-gray-600">Compress images to save space while preserving quality</p>
+                </div>
+
+                <!-- Image Converter -->
+                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
+                    <div class="text-red-500 mb-4">
+                        <img src="{% static 'image converter.png' %}" alt="image-converter" width="100" height="100">
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">Image Converter</h2>
+                    <p class="text-gray-600">Convert images to different formats seamlessly.</p>
+                </div>
+
+                <!-- Watermark IMAGE -->
+                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
+                    <div class="text-red-500 mb-4">
+                        <img src="{% static 'watermark image.png' %}" alt="Watermark Image" width="100" height="100">
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">Watermark Image</h2>
+                    <p class="text-gray-600">Protect your images by adding custom watermarks with text or logos,
+                        ensuring security and easy recognition.</p>
+                </div>
+
+                <!-- Meme Generator -->
+                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
+                    <div class="text-red-500 mb-4">
+                        <img src="{% static 'laughing emoji.png' %}" alt="Meme Generator" width="100" height="100">
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">Meme Generator</h2>
+                    <p class="text-gray-600">Effortlessly craft hilarious memes by adding custom text to your images
+                        or choosing from a variety of ready-made templates</p>
+                </div>
+
+                <!-- Photo Editor, rotate, flip, beautify -->
+                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
+                    <div class="text-red-500 mb-4">
+                        <img src="{% static 'edit image.png' %}" alt="Edit Image" width="100" height="100">
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">Edit Photo</h2>
+                    <p class="text-gray-600">Enhance and refine your photos with easy-to-use 
+                        editing tools for a stunning finish</p>
+                </div>
+
+                <!-- Upscale Image, increase size -->
+                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
+                    <div class="text-red-500 mb-4">
+                        <img src="{% static 'upscale image.png' %}" alt="upscale image" width="100" height="100">
+                    </div>
+                    <h2 class="text-xl font-semibold mb-2">Upscale Image</h2>
+                    <p class="text-gray-600">Increase the resolution of your images
+                        without losing detail, making them sharper and more vibrant.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

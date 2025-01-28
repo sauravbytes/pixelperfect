@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pixel Perfect</title>
+
+    <!--Tailwind CSS-->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    
+</head>
+<body>
+<div class="bg-gray-800 text-white">
+    <div class="container mx-auto flex justify-between items-center p-4">
+        <!-- Logo -->
+        <div class="text-xl font-bold">
+            <a href="/" class="hover:text-gray-300">Pixel Perfect</a>
+        </div>
+
+        <!-- Navigation Links (Hidden on smaller screens) -->
+        <div class="hidden md:flex space-x-6">
+            <a href="/" class="hover:text-gray-300">Home</a>
+            <a href="#about" class="hover:text-gray-300">About</a>
+            <a href="#services" class="hover:text-gray-300">Services</a>
+            <a href="#contact" class="hover:text-gray-300">Contact</a>
+        </div>
+
+        <!-- Buttons -->
+        <div class="hidden md:flex space-x-4">
+            <a href="#login" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">
+                Login
+            </a>
+            <a href="#signup" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg">
+                Signup
+            </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+            <button id="menu-toggle" class="focus:outline-none">
+                <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu (Hidden by Default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-700">
+        <a href="/" class="block py-2 px-4 hover:bg-gray-600">Home</a>
+        <a href="#about" class="block py-2 px-4 hover:bg-gray-600">About</a>
+        <a href="#services" class="block py-2 px-4 hover:bg-gray-600">Services</a>
+        <a href="#contact" class="block py-2 px-4 hover:bg-gray-600">Contact</a>
+        <a href="#login"
+           class="block bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg mt-2 mx-4 text-center hover:bg-blue-700">
+            Login
+        </a>
+        <a href="#signup"
+           class="block bg-green-600 text-white font-semibold py-2 px-4 rounded-lg mt-2 mx-4 text-center hover:bg-green-700">
+            Signup
+        </a>
+    </div>
+</div>
+
+<script>
+    // JavaScript for toggling the mobile menu
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+    });
+</script>
+
+    {% block content %}
+
+    {% endblock %}
+
+<footer class="bg-gray-800 text-white py-6">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <!-- Logo and Description -->
+            <div class="mb-4 md:mb-0 text-center md:text-left">
+                <h2 class="text-2xl font-bold">Pixel Perfect</h2>
+                <p class="text-sm text-gray-400 mt-2">All your image editing tools in one place.</p>
+            </div>
+
+            <!-- Links Section -->
+            <div class="flex flex-col md:flex-row items-center mb-4 md:mb-0">
+                <a href="/about" class="text-sm text-gray-400 hover:text-white px-3 py-1">About</a>
+                <a href="/services" class="text-sm text-gray-400 hover:text-white px-3 py-1">Services</a>
+                <a href="/contact" class="text-sm text-gray-400 hover:text-white px-3 py-1">Contact Us</a>
+                <a href="/privacy-policy" class="text-sm text-gray-400 hover:text-white px-3 py-1">Privacy Policy</a>
+            </div>
+
+            <!-- Social Media Links (Aligned Horizontally) -->
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="https://www.facebook.com/" target="_blank" class="text-sm text-gray-400 hover:text-white">Facebook</a>
+                <a href="https://twitter.com/" target="_blank"
+                   class="text-sm text-gray-400 hover:text-white">Twitter</a>
+                <a href="https://www.instagram.com/" target="_blank" class="text-sm text-gray-400 hover:text-white">Instagram</a>
+                <a href="https://www.linkedin.com/" target="_blank" class="text-sm text-gray-400 hover:text-white">LinkedIn</a>
+            </div>
+        </div>
+
+        <!-- Copyright Text -->
+        <div class="text-center text-sm text-gray-400 mt-6">
+            <p>&copy; 2025 Pixel Perfect. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>

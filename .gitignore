@@ -1,0 +1,7 @@
+.venv/
+.idea/
+*.tmp
+*.log
+.Thumbs.db
+.env/
+secrets.json
