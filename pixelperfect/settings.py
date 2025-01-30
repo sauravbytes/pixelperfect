@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-&4r_-zr5=*rg^_*dpq2b1*)%ad9=#1%3@1u!$m*!^as@$fk6g9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pixelperfect.stotra.in']
+ALLOWED_HOSTS = ['pixelperfect.stotra.in', '127.0.0.1']
 
 
 # Application definition
