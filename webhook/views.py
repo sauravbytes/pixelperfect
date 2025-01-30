@@ -32,7 +32,7 @@ class GitHubWebhookView(View):
         # For example, pulling the latest code and restarting the server:
         process = Popen(
             ['git', 'pull', 'origin', 'main'],  # Pull latest code
-            cwd='/home/pixelperfect',  # The directory of your project
+            cwd='/var/www/pixelperfect',  # The directory of your project
             stdout=PIPE,
             stderr=PIPE
         )
@@ -43,4 +43,4 @@ class GitHubWebhookView(View):
             print(f"Output: {out.decode()}")
         # Optionally restart your server if required
         # Example: Restarting a service or server
-        Popen(['pm2', 'restart', 'pixelperfect.service'])  # Use PM2 or any other service manager
+        Popen(['pm2', 'restart', 'pixelperfect_gunicorn.service'])  # Use PM2 or any other service manager
