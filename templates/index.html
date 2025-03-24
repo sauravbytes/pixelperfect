@@ -2,91 +2,50 @@
 {% load static %}
 
 {% block content %}
-    <h1 class=" bg-gray-100 text-3xl font-bold mx-auto flex justify-center items-center p-4">The ultimate set of tools for image editing</h1>
+    <div class="bg-gray-100 min-h-screen">
+        <!-- Hero Section -->
+        <div class="bg-gradient-to-r from-blue-500 to-purple-700 text-white text-center py-20">
+            <h1 class="text-4xl font-bold">AI-Powered Image Inpainting</h1>
+            <p class="text-lg mt-4">Restore & Repair damaged photos with advanced AI.</p>
+            <a href="#upload"
+               class="mt-6 inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-gray-200">
+                Try It Now
+            </a>
+        </div>
 
-    <div class="bg-gray-100 min-h-screen p-6">
-        <div class="container mx-auto">
-            <h1 class="text-3xl font-bold text-center mb-8">Image Editing Tool Box</h1>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Image Cropper -->
-                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
-                    <div class="text-blue-500 mb-4">
-                        <img width="100" height="100" src=
-                                "https://img.icons8.com/external-mixed-line-solid-yogi-aprelliyanto/100/
-                                external-crop-image-creative-thinking-mixed-line-solid-yogi-aprelliyanto.png" 
-                             alt="external-crop-image-creative-thinking-mixed-line-solid-yogi-aprelliyanto"/>
+        <!-- Main Section (Before-After + Upload) -->
+        <div class="max-w-6xl mx-auto py-16 px-6 flex flex-col md:flex-row items-center gap-12">
+            <!-- Before & After Images -->
+            <div class="w-full md:w-1/2">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Before & After Restoration</h2>
+                <div class="relative w-80 h-80 mx-auto">
+                    <div class="relative w-full h-full">
+                        <img src="{% static 'damaged.jpg' %}" alt="Damaged Image"
+                             class="absolute top-0 left-0 w-full h-full object-contain rounded-lg shadow-lg">
+                        <img src="{% static 'restored.png' %}" alt="Restored Image"
+                             class="absolute top-0 left-0 w-full h-full object-contain rounded-lg shadow-lg opacity-0 hover:opacity-100 transition-opacity duration-500">
                     </div>
-                    <h2 class="text-xl font-semibold mb-2">Image Cropper</h2>
-                    <p class="text-gray-600">Crop your images to perfection with ease.</p>
-                </div>
-
-                <!-- Image Resizer -->
-                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
-                    <div class="text-green-500 mb-4">
-                        <img src="{% static 'image resize.png' %}" alt="image-resize" width="100" height="100">
-                    </div>
-                    <h2 class="text-xl font-semibold mb-2">Image Resizer</h2>
-                    <p class="text-gray-600">Set your dimensions in pixels or percentages and effortlessly resize your JPG, PNG, SVG, and GIF images.</p>
-                </div>
-
-                <!-- Image Compressor -->
-                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
-                    <div class="text-yellow-500 mb-4">
-                        <img src="{% static 'image compressor.png' %}" alt="image-compress" width="100" height="100">
-                    </div>
-                    <h2 class="text-xl font-semibold mb-2">Image Compressor</h2>
-                    <p class="text-gray-600">Compress images to save space while preserving quality</p>
-                </div>
-
-                <!-- Image Converter -->
-                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
-                    <div class="text-red-500 mb-4">
-                        <img src="{% static 'image converter.png' %}" alt="image-converter" width="100" height="100">
-                    </div>
-                    <h2 class="text-xl font-semibold mb-2">Image Converter</h2>
-                    <p class="text-gray-600">Convert images to different formats seamlessly.</p>
-                </div>
-
-                <!-- Watermark IMAGE -->
-                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
-                    <div class="text-red-500 mb-4">
-                        <img src="{% static 'watermark image.png' %}" alt="Watermark Image" width="100" height="100">
-                    </div>
-                    <h2 class="text-xl font-semibold mb-2">Watermark Image</h2>
-                    <p class="text-gray-600">Protect your images by adding custom watermarks with text or logos,
-                        ensuring security and easy recognition.</p>
-                </div>
-
-                <!-- Meme Generator -->
-                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
-                    <div class="text-red-500 mb-4">
-                        <img src="{% static 'laughing emoji.png' %}" alt="Meme Generator" width="100" height="100">
-                    </div>
-                    <h2 class="text-xl font-semibold mb-2">Meme Generator</h2>
-                    <p class="text-gray-600">Effortlessly craft hilarious memes by adding custom text to your images
-                        or choosing from a variety of ready-made templates</p>
-                </div>
-
-                <!-- Photo Editor, rotate, flip, beautify -->
-                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
-                    <div class="text-red-500 mb-4">
-                        <img src="{% static 'edit image.png' %}" alt="Edit Image" width="100" height="100">
-                    </div>
-                    <h2 class="text-xl font-semibold mb-2">Edit Photo</h2>
-                    <p class="text-gray-600">Enhance and refine your photos with easy-to-use 
-                        editing tools for a stunning finish</p>
-                </div>
-
-                <!-- Upscale Image, increase size -->
-                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
-                    <div class="text-red-500 mb-4">
-                        <img src="{% static 'upscale image.png' %}" alt="upscale image" width="100" height="100">
-                    </div>
-                    <h2 class="text-xl font-semibold mb-2">Upscale Image</h2>
-                    <p class="text-gray-600">Increase the resolution of your images
-                        without losing detail, making them sharper and more vibrant.</p>
+                    <p class="text-gray-600 mt-2 text-sm text-center">Hover to see the restored version.</p>
                 </div>
             </div>
+
+            <!-- Upload Section -->
+            <div id="upload" class="w-full md:w-1/2 bg-white p-8 shadow-lg rounded-lg">
+                <h2 class="text-2xl font-bold text-gray-800">Upload Your Image</h2>
+                <p class="mt-2 text-gray-600">Try our AI-powered image inpainting now.</p>
+                <form method="POST" enctype="multipart/form-data" class="mt-6">
+                    {% csrf_token %}
+                    <div class="flex flex-col gap-4">
+                        <input type="file" name="image"
+                               class="block w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200">
+                        <button type="submit"
+                                class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-3 rounded-lg shadow-md hover:from-blue-600 hover:to-blue-800 transition-all">
+                            Restore Image
+                        </button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
 

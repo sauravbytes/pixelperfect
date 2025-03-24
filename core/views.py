@@ -10,3 +10,8 @@ class HomeView(View):
     def get(self, request):
         return render(request, 'index.html')
 
+class ServiceView(View):
+
+    def get(self, request):
+        return render(request, 'services.html')
+
