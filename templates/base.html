@@ -8,6 +8,20 @@
     <!--Tailwind CSS-->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     
+    <style>
+        /* Custom animation for buttons */
+        .btn-animate {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        .btn-animate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-animate:active {
+            transform: translateY(1px);
+        }
+    </style>
 </head>
 <body>
 <div class="bg-gray-800 text-white">
@@ -27,10 +41,10 @@
 
         <!-- Buttons -->
         <div class="hidden md:flex space-x-4">
-            <a href="#login" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">
+            <a href="#login" class="btn-animate bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg">
                 Login
             </a>
-            <a href="#signup" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg">
+            <a href="#signup" class="btn-animate bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg">
                 Signup
             </a>
         </div>
@@ -58,11 +72,11 @@
         <a href="{% url 'services' %}" class="text-sm text-gray-400 hover:text-white px-3 py-1">Services</a>
         <a href="#contact" class="block py-2 px-4 hover:bg-gray-600">Contact</a>
         <a href="#login"
-           class="block bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg mt-2 mx-4 text-center hover:bg-blue-700">
+           class="btn-animate block bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg mt-2 mx-4 text-center hover:bg-gray-700">
             Login
         </a>
         <a href="#signup"
-           class="block bg-green-600 text-white font-semibold py-2 px-4 rounded-lg mt-2 mx-4 text-center hover:bg-green-700">
+           class="btn-animate block bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg mt-2 mx-4 text-center hover:bg-gray-700">
             Signup
         </a>
     </div>
