@@ -49,8 +49,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                         </svg>
                     </div>
-                    <h3 class="text-base font-medium text-gray-900 mb-1">Missing Parts</h3>
-                    <p class="text-gray-600 text-xs">Reconstruct lost portions</p>
+                    <h3 class="text-base font-medium text-gray-900 mb-1">Enhance Faces</h3>
+                    <p class="text-gray-600 text-xs">Enhance and repair damaged faces with the latest technology.</p>
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@
                             Hover to see restored
                         </div>
                     </div>
-                    <p class="text-gray-500 text-xs mt-1 text-center">Sample restoration (300px width)</p>
+{#                    <p class="text-gray-500 text-xs mt-1 text-center">Sample restoration (300px width)</p>#}
                 </div>
 
                 <!-- Upload Section - Shifted Right -->
@@ -77,7 +77,7 @@
                     <h2 class="text-lg font-normal text-gray-900 mb-3">Upload Your Image</h2>
                     <p class="text-gray-600 text-sm mb-4">Get started with your restoration</p>
                     
-                    <form method="POST" enctype="multipart/form-data" class="space-y-3">
+                    <form action="{% url 'image-upload' %}" method="POST" enctype="multipart/form-data" class="space-y-3">
                         {% csrf_token %}
                         <div>
                             <div class="flex justify-center px-4 pt-5 pb-6 border border-gray-300 border-dashed rounded-md">
