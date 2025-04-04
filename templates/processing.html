@@ -1,0 +1,49 @@
+<div class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md text-center">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Processing Your Image</h1>
+        
+        <div class="flex justify-center mb-6">
+            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"></div>
+        </div>
+        
+        <p id="progress-message" class="text-gray-600 mb-6">Please wait while we remove scratches from your image...</p>
+        
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+            <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full animate-pulse" style="width: 45%"></div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            const processingId = "{{ processing_id }}";
+            const checkInterval = 2000; // 2 seconds
+            
+            function checkStatus() {
+                $.ajax({
+                    url: `/check-status/${processingId}/`,
+                    method: "GET",
+                    success: function(data) {
+                        if (data.is_completed) {
+                            if (data.result_url) {
+                                window.location.href = data.result_url;
+                            }
+                        } else {
+                            // Update progress bar randomly for demo (replace with actual progress if available)
+                            const progress = Math.min(90, parseInt($("#progress-bar").css("width")) + Math.random() * 10);
+                            $("#progress-bar").css("width", `${progress}%`);
+                            
+                            setTimeout(checkStatus, checkInterval);
+                        }
+                    },
+                    error: function() {
+                        $("#progress-message").text("Error checking status. Trying again...");
+                        setTimeout(checkStatus, checkInterval);
+                    }
+                });
+            }
+            
+            // Start checking status
+            setTimeout(checkStatus, checkInterval);
+        });
+    </script>
+</div>

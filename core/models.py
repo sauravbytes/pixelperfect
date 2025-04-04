@@ -5,6 +5,8 @@ from django.db import models
 from django.db import models
 
 
-class ImageUpload(models.Model):
-    image = models.ImageField(upload_to='uploads/')
+class ProcessedImage(models.Model):
+    original_image = models.ImageField(upload_to='original_images/')
+    processed_image = models.ImageField(upload_to='processed_images/', blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
+

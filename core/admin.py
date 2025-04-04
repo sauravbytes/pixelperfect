@@ -1,6 +1,6 @@
 from django.contrib import admin
-from core.models import ImageUpload
+from core.models import ProcessedImage
 # Register your models here.
 
 
-admin.site.register(ImageUpload),
+admin.site.register(ProcessedImage),

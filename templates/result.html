@@ -1,0 +1,12 @@
+{% block content %}
+    <div class="bg-gray-100 min-h-screen p-6">
+        <h2>Original Image</h2>
+        <img src="{{ image.original_image.url }}" width="400">
+    
+        <h2>Processed Image</h2>
+        <img src="{{ image.processed_image.url }}" width="400">
+    
+        <br><br>
+        <a href="{% url 'image-upload' %}">Upload Another Image</a>
+    </div>
+{% endblock %}
