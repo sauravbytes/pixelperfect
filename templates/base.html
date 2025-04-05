@@ -21,6 +21,39 @@
         .btn-animate:active {
             transform: translateY(1px);
         }
+
+        #progressContainer {
+            width: 100%;
+            max-width: 400px;
+            height: 20px;
+            background-color: #ddd;
+            overflow: hidden;
+            border-radius: 10px;
+            display: none; /* hidden initially */
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #progressBar {
+            height: 100%;
+            width: 30%;
+            background-color: #4caf50;
+            position: absolute;
+            left: -30%; /* start offscreen */
+            animation: moveLoop 2s linear infinite;
+        }
+
+        @keyframes moveLoop {
+            0% {
+                left: -30%;
+            }
+            50% {
+                left: 50%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -39,15 +72,32 @@
             <a href="#contact" class="hover:text-gray-300">Contact</a>
         </div>
 
-        <!-- Buttons -->
-        <div class="hidden md:flex space-x-4">
-            <a href="#login" class="btn-animate bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg">
-                Login
-            </a>
-            <a href="#signup" class="btn-animate bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg">
-                Signup
-            </a>
+        <!-- Responsive Auth Buttons / Username Display -->
+        <div class="flex items-center space-x-4">
+            {% if username %}
+                <!-- Logged in state -->
+                <span class="text-white font-medium hidden md:inline">Hello, {{ username }}</span>
+
+                <form action="{% url 'logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit"
+                            class=" cursor-pointer btn-animate bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg">
+                        Logout
+                    </button>
+                </form>
+            {% else %}
+                <!-- Not logged in -->
+                <a href="{% url 'login' %}"
+                   class="btn-animate bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg">
+                    Login
+                </a>
+                <a href="{% url 'register' %}"
+                   class="btn-animate bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg">
+                    Signup
+                </a>
+            {% endif %}
         </div>
+
 
         <!-- Mobile Menu Button -->
         <div class="md:hidden">

@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block content %}
+
     <div class="bg-white min-h-screen">
         <!-- Hero Section -->
         <div class="bg-gray-100 text-gray-900 text-center py-16 px-4 border-b border-gray-200">
@@ -82,10 +83,16 @@
                         <div class="flex flex-col gap-4">
                             <input type="file" name="image"
                                    class="block w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200">
-                            <button type="submit"
+                            <button onclick="showProgressBar()" type="submit"
                                     class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-3 rounded-lg shadow-md hover:from-blue-600 hover:to-blue-800 transition-all">
                                 Restore Image
                             </button>
+
+                            <div id="progressContainer">
+                                <div id="progressBar"></div>
+                            </div>
+
+                            <p class="text-xs w-full">Please wait for about 3 Minutes to process your Image.</p>
                         </div>
                     </form>
                 </div>
@@ -93,4 +100,10 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function showProgressBar() {
+            document.getElementById("progressContainer").style.display = "block";
+        }
+    </script>
 {% endblock %}

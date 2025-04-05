@@ -12,20 +12,22 @@ from zeroscratches import EraseScratches
 from PIL import Image
 import PIL.Image
 import time
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from .forms import CustomUserCreationForm
 # Create your views here.
 
 
-class HomeView(View):
+# @login_required()
+def HomeView(request):
 
-    def get(self, request):
-        return render(request, 'index.html')
+    return render(request, 'index.html')
 
 
-class ServiceView(View):
-
-    def get(self, request):
-        return render(request, 'services.html')
+def ServiceView(request):
+    return render(request, 'services.html')
 
 
 def process_image(request):
@@ -73,3 +75,32 @@ def process_image(request):
 def image_result(request, image_id):
     image = ProcessedImage.objects.get(id=image_id)
     return render(request, 'result.html', {'image': image})
+
+
+def register_view(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Account Created Successfully")
+            return redirect('login')
+    else:
+        form = CustomUserCreationForm()
+    return render(request, 'registration/signup.html', {'form': form})
+
+
+def ProfileLogin(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # Authenticate user
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return render(request, 'index.html', {'username': username})  # or your desired view name
+        else:
+            error = "Invalid username or password"
+
+            return render(request, 'registration/login.html', {"error": error})
+
