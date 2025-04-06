@@ -69,7 +69,7 @@ def process_image(request):
 
         return redirect('image_result', image_id=processed_image.id)
 
-    return render(request, 'upload.html')
+    return render(request, 'index.html')
 
 
 def image_result(request, image_id):

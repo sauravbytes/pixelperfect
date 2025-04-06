@@ -3,6 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Restore Pixel</title>
 
     <!--Tailwind CSS-->
@@ -22,118 +24,99 @@
             transform: translateY(1px);
         }
 
-        #progressContainer {
-            width: 100%;
-            max-width: 400px;
-            height: 20px;
-            background-color: #ddd;
-            overflow: hidden;
-            border-radius: 10px;
-            display: none; /* hidden initially */
-            margin-top: 20px;
-            position: relative;
-        }
+     #progressContainer {
+      width: 100%;
+      max-width: 400px;
+      height: 20px;
+      background-color: #ddd;
+      overflow: hidden;
+      border-radius: 10px;
+      display: none; /* hidden initially */
+      margin-top: 20px;
+      position: relative;
+    }
 
-        #progressBar {
-            height: 100%;
-            width: 30%;
-            background-color: #4caf50;
-            position: absolute;
-            left: -30%; /* start offscreen */
-            animation: moveLoop 2s linear infinite;
-        }
+    #progressBar {
+      height: 100%;
+      width: 30%;
+      background-color: #4caf50;
+      position: absolute;
+      left: -30%; /* start offscreen */
+      animation: moveLoop 2s linear infinite;
+    }
 
-        @keyframes moveLoop {
-            0% {
-                left: -30%;
-            }
-            50% {
-                left: 50%;
-            }
-            100% {
-                left: 100%;
-            }
-        }
+    @keyframes moveLoop {
+      0%   { left: -30%; }
+      50%  { left: 50%; }
+      100% { left: 100%; }
+    }
     </style>
 </head>
 <body>
-<div class="bg-gray-800 text-white">
-    <div class="container mx-auto flex justify-between items-center p-4">
+<!-- Navbar -->
+<nav class="bg-gray-800 text-white">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between relative">
         <!-- Logo -->
         <div class="text-xl font-bold">
-            <a href="/" class="hover:text-gray-300">Restore Pixel</a>
+            <a href="/">Restore Pixel</a>
         </div>
 
-        <!-- Navigation Links (Hidden on smaller screens) -->
-        <div class="hidden md:flex space-x-6">
+        <!-- Nav Links (centered on desktop) -->
+        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-6">
             <a href="/" class="hover:text-gray-300">Home</a>
             <a href="#about" class="hover:text-gray-300">About</a>
             <a href="{% url 'services' %}" class="hover:text-gray-300">Services</a>
             <a href="#contact" class="hover:text-gray-300">Contact</a>
         </div>
 
-        <!-- Responsive Auth Buttons / Username Display -->
-        <div class="flex items-center space-x-4">
+        <!-- Auth Buttons (right on desktop) -->
+        <div class="hidden md:flex items-center space-x-4">
             {% if username %}
-                <!-- Logged in state -->
-                <span class="text-white font-medium hidden md:inline">Hello, {{ username }}</span>
-
+                <span class="text-white">Hello, {{ username }}</span>
                 <form action="{% url 'logout' %}" method="POST">
                     {% csrf_token %}
-                    <button type="submit"
-                            class=" cursor-pointer btn-animate bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg">
-                        Logout
-                    </button>
+                    <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">Logout</button>
                 </form>
             {% else %}
-                <!-- Not logged in -->
-                <a href="{% url 'login' %}"
-                   class="btn-animate bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg">
-                    Login
-                </a>
-                <a href="{% url 'register' %}"
-                   class="btn-animate bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg">
-                    Signup
-                </a>
+                <a href="{% url 'login' %}" class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-lg">Login</a>
+                <a href="{% url 'register' %}" class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-lg">Signup</a>
             {% endif %}
         </div>
 
-
-        <!-- Mobile Menu Button -->
+        <!-- Mobile Menu Toggle -->
         <div class="md:hidden">
             <button id="menu-toggle" class="focus:outline-none">
-                <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        class="w-6 h-6"
-                >
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </div>
     </div>
 
-    <!-- Mobile Menu (Hidden by Default) -->
-    <div id="mobile-menu" class="hidden md:hidden bg-gray-700">
-        <a href="/" class="block py-2 px-4 hover:bg-gray-600">Home</a>
-        <a href="#about" class="block py-2 px-4 hover:bg-gray-600">About</a>
-        <a href="{% url 'services' %}" class="text-sm text-gray-400 hover:text-white px-3 py-1">Services</a>
-        <a href="#contact" class="block py-2 px-4 hover:bg-gray-600">Contact</a>
-        <a href="#login"
-           class="btn-animate block bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg mt-2 mx-4 text-center hover:bg-gray-700">
-            Login
-        </a>
-        <a href="#signup"
-           class="btn-animate block bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg mt-2 mx-4 text-center hover:bg-gray-700">
-            Signup
-        </a>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-700 px-4 py-2 space-y-2">
+        <a href="/" class="block hover:text-gray-300">Home</a>
+        <a href="#about" class="block hover:text-gray-300">About</a>
+        <a href="{% url 'services' %}" class="block hover:text-gray-300">Services</a>
+        <a href="#contact" class="block hover:text-gray-300">Contact</a>
+
+        {% if username %}
+            <span class="block py-2">Hello, {{ username }}</span>
+            <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button class="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}" class="block bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded text-center">Login</a>
+            <a href="{% url 'register' %}" class="block bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded text-center">Signup</a>
+        {% endif %}
     </div>
-</div>
+</nav>
+
 
 <script>
-    // JavaScript for toggling the mobile menu
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
 
@@ -142,29 +125,32 @@
     });
 </script>
 
-    {% block content %}
 
-    {% endblock %}
+<!-- Content Block -->
+{% block content %}
 
+{% endblock %}
+
+<!-- Footer -->
 <footer class="bg-gray-800 text-white py-6">
     <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-            <!-- Logo and Description -->
-            <div class="mb-4 md:mb-0 text-center md:text-left">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <!-- Logo & Description -->
+            <div class="text-center md:text-left">
                 <h2 class="text-2xl font-bold">Restore Pixel</h2>
                 <p class="text-sm text-gray-400 mt-2">All your image editing tools in one place.</p>
             </div>
 
-            <!-- Links Section -->
-            <div class="flex flex-col md:flex-row items-center mb-4 md:mb-0">
-                <a href="/about" class="text-sm text-gray-400 hover:text-white px-3 py-1">About</a>
-                <a href="{% url 'services' %}" class="text-sm text-gray-400 hover:text-white px-3 py-1">Services</a>
-                <a href="/contact" class="text-sm text-gray-400 hover:text-white px-3 py-1">Contact Us</a>
-                <a href="/privacy-policy" class="text-sm text-gray-400 hover:text-white px-3 py-1">Privacy Policy</a>
+            <!-- Footer Links -->
+            <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+                <a href="/about" class="text-sm text-gray-400 hover:text-white">About</a>
+                <a href="{% url 'services' %}" class="text-sm text-gray-400 hover:text-white">Services</a>
+                <a href="/contact" class="text-sm text-gray-400 hover:text-white">Contact Us</a>
+                <a href="/privacy-policy" class="text-sm text-gray-400 hover:text-white">Privacy Policy</a>
             </div>
 
-            <!-- Social Media Links (Aligned Horizontally) -->
-            <div class="flex space-x-6 mt-4 md:mt-0">
+            <!-- Social Media -->
+            <div class="flex space-x-6 justify-center">
                 <a href="https://www.facebook.com/" target="_blank" class="text-sm text-gray-400 hover:text-white">Facebook</a>
                 <a href="https://twitter.com/" target="_blank"
                    class="text-sm text-gray-400 hover:text-white">Twitter</a>
@@ -173,11 +159,12 @@
             </div>
         </div>
 
-        <!-- Copyright Text -->
+        <!-- Copyright -->
         <div class="text-center text-sm text-gray-400 mt-6">
             <p>&copy; 2025 Restore Pixel. All rights reserved.</p>
         </div>
     </div>
 </footer>
+
 </body>
 </html>

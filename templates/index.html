@@ -1,106 +1,133 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
 {% block content %}
 
-    <div class="bg-white min-h-screen">
-        <!-- Hero Section -->
-        <div class="bg-gray-100 text-gray-900 text-center py-16 px-4 border-b border-gray-200">
-            <div class="max-w-2xl mx-auto">
-                <h1 class="text-3xl md:text-4xl font-medium mb-4">Professional Image Restoration</h1>
-                <p class="text-gray-600 mb-6">Repair damaged photos in a single click</p>
-                <a href="#upload"
-                   class="inline-block bg-gray-800 text-white px-5 py-2 rounded-md hover:bg-gray-700 transition-colors">
-                    Restore Your Photos
-                </a>
-            </div>
+<!-- Alpine.js for mobile swiping -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<div class="bg-white min-h-screen">
+
+    <!-- Hero Section -->
+    <div class="bg-gray-100 text-gray-900 text-center py-16 px-4 border-b border-gray-200">
+        <div class="max-w-2xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-medium mb-4">Professional Image Restoration</h1>
+            <p class="text-gray-600 mb-6">Repair damaged photos in a single click</p>
+            <a href="#upload" class="inline-block bg-gray-800 text-white px-5 py-2 rounded-md hover:bg-gray-700 transition-colors">
+                Restore Your Photos
+            </a>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl font-normal text-gray-900">Restoration Features</h2>
+            <p class="mt-2 text-gray-600 text-sm">Our technology handles various types of image damage</p>
         </div>
 
-        <!-- Features Section -->
-        <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl font-normal text-gray-900">Restoration Features</h2>
-                <p class="mt-2 text-gray-600 text-sm">Our technology handles various types of image damage</p>
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Features Cards (Same as yours) -->
+            <div class="bg-gray-50 p-5 rounded-md border border-gray-200">
+                <div class="text-gray-700 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                              d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                    </svg>
+                </div>
+                <h3 class="text-base font-medium text-gray-900 mb-1">Damage Repair</h3>
+                <p class="text-gray-600 text-xs">Fix scratches and physical damage</p>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-gray-50 p-5 rounded-md border border-gray-200">
-                    <div class="text-gray-700 mb-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                        </svg>
-                    </div>
-                    <h3 class="text-base font-medium text-gray-900 mb-1">Damage Repair</h3>
-                    <p class="text-gray-600 text-xs">Fix scratches and physical damage</p>
+            <div class="bg-gray-50 p-5 rounded-md border border-gray-200">
+                <div class="text-gray-700 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                              d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                    </svg>
                 </div>
-
-                <div class="bg-gray-50 p-5 rounded-md border border-gray-200">
-                    <div class="text-gray-700 mb-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                        </svg>
-                    </div>
-                    <h3 class="text-base font-medium text-gray-900 mb-1">Color Correction</h3>
-                    <p class="text-gray-600 text-xs">Restore faded colors</p>
-                </div>
-
-                <div class="bg-gray-50 p-5 rounded-md border border-gray-200">
-                    <div class="text-gray-700 mb-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <h3 class="text-base font-medium text-gray-900 mb-1">Color Correction</h3>
+                <p class="text-gray-600 text-xs">Restore faded colors</p>
+            </div>
+            <div class="bg-gray-50 p-5 rounded-md border border-gray-200">
+                <div class="text-gray-700 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                         </svg>
-                    </div>
-                    <h3 class="text-base font-medium text-gray-900 mb-1">Enhance Faces</h3>
-                    <p class="text-gray-600 text-xs">Enhance and repair damaged faces with the latest technology.</p>
                 </div>
-            </div>
-        </div>
-
-        <!-- Before & After Section -->
-        <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6">
-            <div class="flex flex-col md:flex-row items-start gap-6">
-                <!-- Before & After Comparison - Shifted Left -->
-                <div class="w-full md:w-2/5 md:ml-8">
-                    <div class="relative group">
-                        <img src="{% static 'damaged.jpg' %}" alt="Damaged Image"
-                             class="w-full h-auto rounded-sm border border-gray-300">
-                        <img src="{% static 'restored.png' %}" alt="Restored Image"
-                             class="absolute inset-0 w-full h-auto rounded-sm border border-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 text-white px-1.5 py-0.5 rounded text-xs">
-                            Hover to see restored
-                        </div>
-                    </div>
-{#                    <p class="text-gray-500 text-xs mt-1 text-center">Sample restoration (300px width)</p>#}
-                </div>
-
-                <!-- Upload Section -->
-                <div id="upload" class="w-full md:w-1/2 bg-white p-8 shadow-lg rounded-lg">
-                    <h2 class="text-2xl font-bold text-gray-800">Upload Your Image</h2>
-                    <p class="mt-2 text-gray-600">Try our AI-powered image inpainting now.</p>
-                    <form action="{% url 'image-upload' %}" method="POST" enctype="multipart/form-data" class="mt-6">
-                        {% csrf_token %}
-                        <div class="flex flex-col gap-4">
-                            <input type="file" name="image"
-                                   class="block w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200">
-                            <button onclick="showProgressBar()" type="submit"
-                                    class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-3 rounded-lg shadow-md hover:from-blue-600 hover:to-blue-800 transition-all">
-                                Restore Image
-                            </button>
-
-                            <div id="progressContainer">
-                                <div id="progressBar"></div>
-                            </div>
-
-                            <p class="text-xs w-full">Please wait for about 3 Minutes to process your Image.</p>
-                        </div>
-                    </form>
-                </div>
-                
+                <h3 class="text-base font-medium text-gray-900 mb-1">Enhance Faces</h3>
+                <p class="text-gray-600 text-xs">Enhance and repair damaged faces with the latest technology.</p>
             </div>
         </div>
     </div>
 
+    <!-- Before & After + Upload Section -->
+    <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row gap-8 items-start">
+
+            <!-- Responsive Before/After -->
+            <div class="w-full md:w-2/5">
+                <!-- Desktop Hover -->
+                <div class="hidden md:block relative group">
+                    <img src="{% static 'damaged.jpg' %}" alt="Damaged"
+                         class="w-full rounded-sm border border-gray-300">
+                    <img src="{% static 'restored.png' %}" alt="Restored"
+                         class="absolute inset-0 w-full rounded-sm border border-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="absolute bottom-2 left-2 bg-black bg-opacity-60 text-white text-xs px-2 py-1 rounded">
+                        Hover to see restored
+                    </div>
+                </div>
+
+                <!-- Mobile Swipe -->
+                <div x-data="{ imageIndex: 0 }" class="md:hidden relative">
+                    <template x-if="imageIndex === 0">
+                        <img src="{% static 'damaged.jpg' %}" alt="Damaged"
+                             class="w-full rounded-sm border border-gray-300">
+                    </template>
+                    <template x-if="imageIndex === 1">
+                        <img src="{% static 'restored.png' %}" alt="Restored"
+                             class="w-full rounded-sm border border-gray-300">
+                    </template>
+
+                    <!-- Swipe buttons -->
+                    <div class="flex justify-between mt-2">
+                        <button @click="imageIndex = 0"
+                                :class="{ 'bg-gray-800 text-white': imageIndex === 0 }"
+                                class="flex-1 py-2 rounded-l text-sm border border-gray-300">Before</button>
+                        <button @click="imageIndex = 1"
+                                :class="{ 'bg-gray-800 text-white': imageIndex === 1 }"
+                                class="flex-1 py-2 rounded-r text-sm border border-gray-300">After</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload Section -->
+            <div id="upload" class="w-full md:w-1/2 bg-white p-6 shadow-lg rounded-lg">
+                <h2 class="text-2xl font-bold text-gray-800">Upload Your Image</h2>
+                <p class="mt-2 text-gray-600">Try our AI-powered image inpainting now.</p>
+
+                <form action="{% url 'image-upload' %}" method="POST" enctype="multipart/form-data" class="mt-6">
+                    {% csrf_token %}
+                    <div class="flex flex-col gap-4">
+                        <input type="file" name="image"
+                               class="block w-full p-3 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring focus:ring-blue-200">
+                        <button onclick="showProgressBar()" type="submit"
+                                class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-3 rounded-lg shadow-md hover:from-blue-600 hover:to-blue-800 transition-all">
+                            Restore Image
+                        </button>
+
+                        <div id="progressContainer">
+                            <div id="progressBar"></div>
+                        </div>
+
+                        <p class="text-xs text-gray-500">Please wait for about 3 minutes to process your image.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
     <script>
         function showProgressBar() {
             document.getElementById("progressContainer").style.display = "block";
