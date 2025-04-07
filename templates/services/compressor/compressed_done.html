@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
+        <h2 class="text-2xl font-bold mb-4">Here’s your compressed image:</h2>
+        <img src="{{ compressed_url }}" alt="Compressed Image" class="max-w-full rounded-xl shadow-md mb-4"/>
+        <a href="{{ compressed_url }}" download
+           class="bg-green-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-700 transition">
+            Download Image
+        </a>
+    </div>
+
+{% endblock %}

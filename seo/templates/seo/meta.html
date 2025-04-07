@@ -1,0 +1,53 @@
+{% load seo_meta %}
+
+{% if page.seo_title %}
+    <meta name="title" content="{{ page.seo_title }}">
+{% endif %}
+
+{% if page.meta_description %}
+    <meta name="description" content="{{ page.meta_description }}">
+{% endif %}
+
+{% if page.keywords %}
+    <meta name="keywords" content="{{ page.keywords }}">
+{% endif %}
+
+{% if page.is_canonical_page %}
+    <link rel="canonical" href="{% full_url path=request.path %}">
+{% else %}
+    <link rel="canonical" href="{{ page.canonical_url }}">
+{% endif %}
+
+{% if page.show_author %}
+    <meta name="author" content="{{ page.author }}">
+{% endif %}
+
+
+
+{#================ Twitter meta ================ #}
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stotra Ratnavali">
+    <meta name="twitter:site" content="@stotraratnavali">
+    <meta name="twitter:description"
+          content="{{ seo_meta.description }}">
+
+    {#================ Reddit meta ================ #}
+
+    <meta name="reddit:card" content="summary_large_image">
+    <meta name="reddit:title" content="Stotra Ratnavali">
+    <meta name="reddit:site" content="r/stotraratnavali">
+    <meta name="reddit:description"
+          content="{{ seo_meta.description }}">
+
+
+{# ============= Open graphs ================ #}
+
+<meta property="og:url" content="{% full_url request.path %}"/>
+<meta property="og:title" content="{{ page.seo_title }}"/>
+<meta property="og:image"
+      content="
+              {% if page.search_image %}{{ page.search_image }}{% else %}https://backend.webmatrices.net/api/generator/get-og/?title={{ page.seo_title }}&description={{ page.meta_description|urlencode }}&domain={{ request.get_host }}&url=https://{{ request.get_host }}{{ request.path }}{% endif %}"/>
+<meta property="og:description"
+      content="{{ page.meta_description }}"/>
+<meta property="og:site_name" content="{{ request.site }}"/>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>Here is your resized image:</h2>
+    <img src="{{ resized_url }}" alt="Resized image">
+    <a
+            href="{{ resized_url }}"
+            download
+            class="inline-block px-5 py-2 mt-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition duration-200"
+    >
+        Download Image
+    </a>
+{% endblock %}

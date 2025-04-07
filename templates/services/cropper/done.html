@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
+        <h2 class="text-2xl font-bold mb-4">Here is your cropped image:</h2>
+        <img src="{{ cropped_url }}" alt="Cropped Image" class="max-w-full rounded-xl shadow-md"/>
+
+        <a
+                href="{{ cropped_url }}"
+                download
+                class="inline-block px-5 py-2 mt-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition duration-200"
+        >
+            Download Image
+        </a>
+    </div>
+
+{% endblock %}

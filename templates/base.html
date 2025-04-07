@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Restore Pixel</title>
+    {% include 'seo/seo-meta.html' %}
+
+    {% block meta-content %}
+
+    {% endblock %}
 
     <!--Tailwind CSS-->
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
@@ -64,9 +68,9 @@
         <!-- Nav Links (centered on desktop) -->
         <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-6">
             <a href="/" class="hover:text-gray-300">Home</a>
-            <a href="#about" class="hover:text-gray-300">About</a>
+            <a href="{% url 'about-us' %}" class="hover:text-gray-300">About</a>
             <a href="{% url 'services' %}" class="hover:text-gray-300">Services</a>
-            <a href="#contact" class="hover:text-gray-300">Contact</a>
+            <a href="mailto:choudharysaurav214@gmail.com" class="hover:text-gray-300">Contact</a>
         </div>
 
         <!-- Auth Buttons (right on desktop) -->
@@ -98,9 +102,9 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-gray-700 px-4 py-2 space-y-2">
         <a href="/" class="block hover:text-gray-300">Home</a>
-        <a href="#about" class="block hover:text-gray-300">About</a>
+        <a href="{% url 'about-us' %}" class="block hover:text-gray-300">About</a>
         <a href="{% url 'services' %}" class="block hover:text-gray-300">Services</a>
-        <a href="#contact" class="block hover:text-gray-300">Contact</a>
+        <a href="mailto:choudharysaurav214@gmail.com" class="block hover:text-gray-300">Contact</a>
 
         {% if username %}
             <span class="block py-2">Hello, {{ username }}</span>
@@ -137,26 +141,26 @@
         <div class="flex flex-col md:flex-row justify-between items-center gap-6">
             <!-- Logo & Description -->
             <div class="text-center md:text-left">
-                <h2 class="text-2xl font-bold">Restore Pixel</h2>
+                <span class="text-2xl font-bold">Restore Pixel</span>
                 <p class="text-sm text-gray-400 mt-2">All your image editing tools in one place.</p>
             </div>
 
             <!-- Footer Links -->
             <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
-                <a href="/about" class="text-sm text-gray-400 hover:text-white">About</a>
+                <a href="{% url 'about-us' %}" class="text-sm text-gray-400 hover:text-white">About</a>
                 <a href="{% url 'services' %}" class="text-sm text-gray-400 hover:text-white">Services</a>
-                <a href="/contact" class="text-sm text-gray-400 hover:text-white">Contact Us</a>
-                <a href="/privacy-policy" class="text-sm text-gray-400 hover:text-white">Privacy Policy</a>
+                <a href="mailto:choudharysaurav214@gmail.com" class="text-sm text-gray-400 hover:text-white">Contact Us</a>
+                <a href="{% url 'privacy-policy' %}" class="text-sm text-gray-400 hover:text-white">Privacy Policy</a>
             </div>
 
             <!-- Social Media -->
             <div class="flex space-x-6 justify-center">
-                <a href="https://www.facebook.com/" target="_blank" class="text-sm text-gray-400 hover:text-white">Facebook</a>
-                <a href="https://twitter.com/" target="_blank"
-                   class="text-sm text-gray-400 hover:text-white">Twitter</a>
-                <a href="https://www.instagram.com/" target="_blank" class="text-sm text-gray-400 hover:text-white">Instagram</a>
-                <a href="https://www.linkedin.com/" target="_blank" class="text-sm text-gray-400 hover:text-white">LinkedIn</a>
+                <a href="https://www.facebook.com/sauravscripter" target="_blank" class="text-sm text-gray-400 hover:text-white">Facebook</a>
+                <a href="https://x.com/sauravscripter" target="_blank" class="text-sm text-gray-400 hover:text-white">Twitter</a>
+                <a href="https://www.instagram.com/sauravscripter/" target="_blank" class="text-sm text-gray-400 hover:text-white">Instagram</a>
+                <a href="https://www.linkedin.com/in/sauravscripter" target="_blank" class="text-sm text-gray-400 hover:text-white">LinkedIn</a>
             </div>
+
         </div>
 
         <!-- Copyright -->
@@ -165,6 +169,7 @@
         </div>
     </div>
 </footer>
+
 
 </body>
 </html>

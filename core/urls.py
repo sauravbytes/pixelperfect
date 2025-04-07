@@ -8,7 +8,14 @@ urlpatterns = [
     path("profile/", views.ProfileLogin, name="profile-login"),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('register/', views.register_view, name='register'),
-    path('services', views.ServiceView, name='services'),
-    path('image-upload', views.process_image, name='image-upload'),
+    path('services/', views.Service, name='services'),
+    path('image-upload/', views.process_image, name='image-upload'),
     path('result/<int:image_id>/', views.image_result, name='image_result'),
+    path('image-cropper/', views.CropImage, name='image-cropper'),
+    path('image-resizer/', views.ResizeImage, name='image-resizer'),
+    path('image-compressor/', views.ImageCompressor, name='image-compressor'),
+    path('image-converter/', views.ConvertImage, name='image-converter'),
+    path('image-upscale/', views.ImageUpscale, name='image-upscale'),
+    path('about-us', views.about, name='about-us'),
+    path('privacy-policy', views.privacy, name='privacy-policy')
 ]

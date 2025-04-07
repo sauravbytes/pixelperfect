@@ -1,0 +1,27 @@
+{% if seo_meta %}
+    {% if seo_meta.title %}
+        <title>{{ seo_meta.title }} {% if not request.path == '/' %} | Restore Pixel{% endif %} </title>
+    {% endif %}
+
+    {% if seo_meta.seo_title %}
+        <meta name="title" content="{{ seo_meta.seo_title }}">
+    {% endif %}
+
+    {% if seo_meta.search_image %}
+        <meta name="search_image" content="{{ seo_meta.search_image }}">
+    {% endif %}
+
+    {% if seo_meta.description %}
+        <meta name="description" content="{{ seo_meta.description }}">
+    {% endif %}
+
+    {% if seo_meta.keywords %}
+        <meta name="keywords" content="{{ seo_meta.keywords }}">
+    {% endif %}
+
+    {% if seo_meta.author %}
+        <meta name="author" content="{{ seo_meta.author }}">
+    {% endif %}
+
+    <link rel="canonical" href="{{ seo_meta.canonical_url}}">
+{% endif %}

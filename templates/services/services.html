@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h1 class="bg-gray-100 text-xl sm:text-2xl md:text-3xl font-bold mx-auto flex justify-center items-center p-4 text-center">
+        The ultimate set of tools for image editing
+    </h1>
+
+    <div class="bg-gray-100 min-h-screen px-4 sm:px-6 md:px-8 py-6">
+        <div class="container mx-auto max-w-screen-xl">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8">Image Editing Tool Box</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Image Cropper -->
+                <a href = {% url 'image-cropper' %}>
+                    <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
+                        <div class="text-blue-500 mb-4">
+                            <img class="w-20 h-20 sm:w-24 sm:h-24 object-contain" src="https://img.icons8.com/external-mixed-line-solid-yogi-aprelliyanto/100/external-crop-image-creative-thinking-mixed-line-solid-yogi-aprelliyanto.png" alt="Crop Image"/>
+                        </div>
+                            <h2 class="text-lg font-semibold mb-2">Image Cropper</h2>
+                            <p class="text-gray-600 break-words">Crop your images to perfection with ease.</p>
+                    </div>
+                </a>
+
+                <!-- Image Resizer -->
+                <a href = {% url 'image-resizer' %}>
+                    <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
+                        <div class="text-green-500 mb-4">
+                            <img class="w-20 h-20 sm:w-24 sm:h-24 object-contain" src="{% static 'image resize.png' %}" alt="image-resize">
+                        </div>
+                            <h2 class="text-lg font-semibold mb-2">Image Resizer</h2>
+                            <p class="text-gray-600 break-words">Effortlessly resize your JPG, PNG, SVG, and GIF images.</p>
+                    </div>
+                </a>
+
+                <!-- Image Compressor -->
+                <a href = {% url 'image-compressor' %}>
+                    <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
+                        <div class="text-yellow-500 mb-4">
+                            <img class="w-20 h-20 sm:w-24 sm:h-24 object-contain" src="{% static 'image compressor.png' %}" alt="image-compress">
+                        </div>
+                        <h2 class="text-lg font-semibold mb-2">Image Compressor</h2>
+                        <p class="text-gray-600 break-words">Compress images to save space while preserving quality.</p>
+                    </div>
+                </a>
+
+                <!-- Image Converter -->
+                <a href = {% url 'image-converter' %}>
+                    <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
+                        <div class="text-red-500 mb-4">
+                            <img class="w-20 h-20 sm:w-24 sm:h-24 object-contain" src="{% static 'image converter.png' %}" alt="image-converter">
+                        </div>
+                        <h2 class="text-lg font-semibold mb-2">Image Converter</h2>
+                        <p class="text-gray-600 break-words">Convert images to different formats seamlessly.</p>
+                    </div>
+                </a>
+
+{#                <!-- Watermark IMAGE -->#}
+{#                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">#}
+{#                    <div class="text-red-500 mb-4">#}
+{#                        <img class="w-20 h-20 sm:w-24 sm:h-24 object-contain" src="{% static 'watermark image.png' %}" alt="Watermark Image">#}
+{#                    </div>#}
+{#                    <h2 class="text-lg font-semibold mb-2">Watermark Image</h2>#}
+{#                    <p class="text-gray-600 break-words">Protect your images by adding custom watermarks with text or logos, ensuring security and easy recognition.</p>#}
+{#                </div>#}
+{##}
+{#                <!-- Meme Generator -->#}
+{#                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">#}
+{#                    <div class="text-red-500 mb-4">#}
+{#                        <img class="w-20 h-20 sm:w-24 sm:h-24 object-contain" src="{% static 'laughing emoji.png' %}" alt="Meme Generator">#}
+{#                    </div>#}
+{#                    <h2 class="text-lg font-semibold mb-2">Meme Generator</h2>#}
+{#                    <p class="text-gray-600 break-words">Effortlessly craft hilarious memes by adding custom text to your images or choosing from a variety of templates.</p>#}
+{#                </div>#}
+
+{#                <!-- Edit Photo -->#}
+{#                <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">#}
+{#                    <div class="text-red-500 mb-4">#}
+{#                        <img class="w-20 h-20 sm:w-24 sm:h-24 object-contain" src="{% static 'edit image.png' %}" alt="Edit Image">#}
+{#                    </div>#}
+{#                    <h2 class="text-lg font-semibold mb-2">Edit Photo</h2>#}
+{#                    <p class="text-gray-600 break-words">Enhance and refine your photos with easy-to-use editing tools for a stunning finish.</p>#}
+{#                </div>#}
+
+                <!-- Upscale Image -->
+                <a href = {% url 'image-upscale' %}>
+                    <div class="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
+                        <div class="text-red-500 mb-4">
+                            <img class="w-20 h-20 sm:w-24 sm:h-24 object-contain" src="{% static 'upscale image.png' %}" alt="Upscale Image">
+                        </div>
+                        <h2 class="text-lg font-semibold mb-2">Upscale Image</h2>
+                        <p class="text-gray-600 break-words">Increase the resolution of your images without losing detail, making them sharper and more vibrant.</p>
+                    </div>
+                 </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-6">
+        <h2 class="text-2xl font-semibold mb-4">Converted Image</h2>
+        <img src="{{ converted_url }}" alt="Converted Image" class="max-w-full rounded-xl shadow mb-4"/>
+        <a href="{{ converted_url }}" download
+           class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg">
+            Download Converted Image
+        </a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% for post in content %}
+        <p>
+            {{ post.content | safe}}
+        </p>
+    {% endfor %}
+{% endblock %}
