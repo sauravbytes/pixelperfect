@@ -17,5 +17,11 @@ urlpatterns = [
     path('image-converter/', views.ConvertImage, name='image-converter'),
     path('image-upscale/', views.ImageUpscale, name='image-upscale'),
     path('about-us', views.about, name='about-us'),
-    path('privacy-policy', views.privacy, name='privacy-policy')
+    path('privacy-policy', views.privacy, name='privacy-policy'),
+    path('our-ai-model', views.AImodels, name='ai-model'),
+    path('cnn-upload-image', views.CNNupload, name='cnn-upload-image'),
+    path('gan-upload-image', views.GANupload, name='gan-upload-image'),
+    path('cnn-image', views.cnn_image, name='cnn-image'),
+    path('gan-image', views.gan_image, name='gan-image')
+
 ]

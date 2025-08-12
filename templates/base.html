@@ -3,11 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% include 'seo/seo-meta.html' %}
 
-    {% block meta-content %}
+    {% block meta-content %}    
 
     {% endblock %}
 
@@ -68,6 +68,7 @@
         <!-- Nav Links (centered on desktop) -->
         <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-6">
             <a href="/" class="hover:text-gray-300">Home</a>
+            <a href="{% url 'ai-model' %}" class="hover:text-gray-300">Our AI Model</a>
             <a href="{% url 'about-us' %}" class="hover:text-gray-300">About</a>
             <a href="{% url 'services' %}" class="hover:text-gray-300">Services</a>
             <a href="mailto:choudharysaurav214@gmail.com" class="hover:text-gray-300">Contact</a>

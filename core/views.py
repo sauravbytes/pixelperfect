@@ -20,6 +20,14 @@ from .forms import CustomUserCreationForm
 from django.core.files.storage import default_storage
 from .models import PrivacyPolicy, AboutUs, HomePage, ServicePage, ImageCropper, ImageConverter, ImageResizer, UpscaleImage, ImageCompressor
 from seo.models import SeoMeta
+import os
+from django.shortcuts import render
+from django.conf import settings
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing.image import img_to_array, load_img
+import numpy as np
+from datetime import datetime
+from PIL import Image
 # Create your views here.
 
 
@@ -368,3 +376,107 @@ def about(request):
     }
 
     return render(request, 'about-us.html', obj)
+
+
+def cnn_image(request):
+
+    if request.method == 'POST':
+        uploaded_file = request.FILES['distorted']
+
+        # Load model once at startup
+
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+        MODEL_PATH = os.path.join(BASE_DIR, 'model', 'inpainting_model_CNN.h5')
+        model = load_model(MODEL_PATH)
+
+        # Save uploaded file
+        timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+        input_filename = f"input_{timestamp}.png"
+        input_path = os.path.join(settings.MEDIA_ROOT, 'uploads', input_filename)
+
+        os.makedirs(os.path.dirname(input_path), exist_ok=True)
+        with open(input_path, 'wb+') as destination:
+            for chunk in uploaded_file.chunks():
+                destination.write(chunk)
+
+        # Preprocess image
+        img = load_img(input_path, target_size=(256, 256))
+        img_array = img_to_array(img) / 255.0
+        img_array = np.expand_dims(img_array, axis=0)
+
+        # Predict / Inpaint
+        output_array = model.predict(img_array)
+        loss, accuracy = model.evaluate(img_array, output_array, verbose=0)  # Self-evaluation
+
+        # Save output image
+        output_array = np.clip(output_array[0] * 255.0, 0, 255).astype(np.uint8)
+        output_filename = f"output_{timestamp}.png"
+        output_path = os.path.join(settings.MEDIA_ROOT, 'outputs', output_filename)
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        from PIL import Image
+        Image.fromarray(output_array).save(output_path)
+
+        # Send data to template
+        return render(request, 'cnn_result.html', {
+            'uploaded_image_url': f"/media/uploads/{input_filename}",
+            'output_image_url': f"/media/outputs/{output_filename}",
+            'loss': round(float(loss), 4),
+            'accuracy': round(float(accuracy), 4),
+        })
+
+def gan_image (request):
+    # Load the GAN model once when server starts
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    MODEL_PATH = os.path.join(BASE_DIR, 'model', 'inpainting_model_GAN.h5')
+    model = load_model(MODEL_PATH, compile=False)
+
+    IMG_HEIGHT, IMG_WIDTH = 256, 256
+
+    restored_image_url = None
+    uploaded_image_url = None
+
+    if request.method == 'POST' and request.FILES.get('distorted'):
+        damaged_image = request.FILES['distorted']
+
+        # Save uploaded image
+        upload_path = os.path.join(settings.MEDIA_ROOT, damaged_image.name)
+        with open(upload_path, 'wb+') as destination:
+            for chunk in damaged_image.chunks():
+                destination.write(chunk)
+        uploaded_image_url = settings.MEDIA_URL + damaged_image.name
+
+        # Preprocess for model
+        img = load_img(upload_path, target_size=(IMG_HEIGHT, IMG_WIDTH))
+        img_array = img_to_array(img) / 255.0
+        img_array = np.expand_dims(img_array, axis=0)
+
+        # Predict restored image
+        restored = model.predict(img_array)[0]
+
+        # Post-process restored image
+        restored = (restored * 255).astype(np.uint8)
+        restored_pil = Image.fromarray(restored)
+
+        # Save restored image
+        restored_filename = "restored_" + damaged_image.name
+        restored_path = os.path.join(settings.MEDIA_ROOT, restored_filename)
+        restored_pil.save(restored_path)
+        restored_image_url = settings.MEDIA_URL + restored_filename
+
+    return render(request, 'gan_result.html', {
+        'uploaded_image_url': uploaded_image_url,
+        'restored_image_url': restored_image_url
+    })
+
+def AImodels(request):
+    return render(request, 'ai_models.html')
+
+
+def CNNupload (request):
+    return render(request, 'cnn-upload-image.html')
+
+
+def GANupload(request):
+    return render(request, 'gan-upload-image.html')

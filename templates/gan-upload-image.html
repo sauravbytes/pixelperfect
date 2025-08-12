@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <form action="{% url 'gan-image' %}" method="post" enctype="multipart/form-data" class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        {% csrf_token %}
+        <h2 class="text-xl font-semibold mb-4 text-center">Generative Adversarial Network Model</h2>
+        <input type="file" name="distorted" class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg p-2 mb-4">
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
+            Restore Image
+        </button>
+    </form>
+</div>
+{% endblock %}
