@@ -27,6 +27,8 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 import numpy as np
 from datetime import datetime
+import tensorflow as tf
+import cv2
 from PIL import Image
 # Create your views here.
 
